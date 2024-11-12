@@ -32,8 +32,8 @@ export function useChat() {
     await addDoc(collection(db, 'messages'), {
       text,
       timestamp: serverTimestamp(),
-      userId: auth.currentUser.uid,
-      userName: auth.currentUser.displayName || 'Usuario'
+      userId: 213214321,
+      userName: 'User'
     });
   };
 

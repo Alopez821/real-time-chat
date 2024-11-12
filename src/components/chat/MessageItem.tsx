@@ -7,6 +7,7 @@ interface MessageItemProps {
 
 export default function MessageItem({ message }: MessageItemProps) {
   const isCurrentUser = message.userId === auth.currentUser?.uid;
+  console.log(message.text)
 
   return (
     <div className={`flex ${isCurrentUser ? 'justify-end' : 'justify-start'} mb-4`}>
@@ -19,8 +20,12 @@ export default function MessageItem({ message }: MessageItemProps) {
           {message.userName || 'Usuario'}
         </div>
         <div>{message.text}</div>
-        <div className="text-xs mt-1 opacity-70">
-          {message.timestamp?.toDate().toLocaleTimeString()}
+        <div className="text-xs mt-1 opacity-70 flex items-center justify-end">
+        {message.timestamp?.toDate().toLocaleTimeString('es-ES', {
+          hour12: true,
+          hour: 'numeric',
+          minute: '2-digit',
+        })}          
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface MessageInputProps {
   onSendMessage: (text: string) => Promise<void>;
@@ -10,6 +10,7 @@ export default function MessageInput({ onSendMessage }: MessageInputProps) {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (message.trim()) {
       await onSendMessage(message);
       setMessage('');
@@ -24,7 +25,7 @@ export default function MessageInput({ onSendMessage }: MessageInputProps) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder="Escribe un mensaje..."
-          className="flex-1 px-4 py-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 px-4 py-2 border text-gray-600 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <button
           type="submit"
